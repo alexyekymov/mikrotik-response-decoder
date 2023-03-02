@@ -1,0 +1,24 @@
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+.wrap {
+    background: lightslategrey;
+    border-radius: 10px;
+    width: 900px;
+    height: 1000px;
+    padding-top: 75px;
+    padding-left: 150px;
+    margin: auto;
+}
+
+body {
+    background: #2d333b;
+    color: #43454a;
+    font-size: 18px;
+}
+
+textarea {
+    border-radius: 10px;
+    padding: 10px;
+}
