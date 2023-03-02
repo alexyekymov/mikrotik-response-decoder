@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  ussd_decoder:
+    image: ussd-decoder
+    restart: unless-stopped
+    container_name: ussd-decoder
+    build:
+      context: ./
+    environment:
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "80:8081"
