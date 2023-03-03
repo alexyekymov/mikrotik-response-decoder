@@ -8,7 +8,13 @@ services:
     build:
       context: ./
     environment:
+      - DB_URL=jdbc:postgresql://psql:5432/ussd_decoder
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
     ports:
       - "8081:8081"
+
+networks:
+  default:
+    external:
+      name: local
