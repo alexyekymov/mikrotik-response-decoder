@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Date;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/decoder")
 public class DecoderController {
 
     private final DecoderService service;

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="wrap">
-    <form th:method="POST" th:action="@{/}" th:object="${encoded}">
+    <form th:method="POST" th:action="@{/decoder}" th:object="${encoded}">
         <p>
             <label for="encoded"> Enter decoded message: </label><br><br>
             <textarea name="encoded" id="encoded" cols="100" rows="10" maxlength="600"
