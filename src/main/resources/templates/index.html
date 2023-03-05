@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="../../static/css/style.css" rel="stylesheet" type="text/css" media="screen"
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="screen"
           th:href="@{/css/style.css}"/>
     <title>Title</title>
 </head>
 <body>
 <div class="wrap">
-    <form  th:method="POST" th:action="@{/}" th:object="${encoded}">
+    <form th:method="POST" th:action="@{/static}" th:object="${encoded}">
         <p>
             <label for="encoded"> Enter decoded message: </label><br><br>
             <textarea name="encoded" id="encoded" cols="100" rows="10" maxlength="600"
