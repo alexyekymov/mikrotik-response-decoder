@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine
+FROM adoptopenjdk/openjdk11:ubi
 ADD . /src
 WORKDIR /src
 RUN ./mvnw package -DskipTests
