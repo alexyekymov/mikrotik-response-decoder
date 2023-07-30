@@ -10,7 +10,7 @@
 <div class="wrap">
     <form method="POST" th:action="@{/}" th:object="${message}">
         <p>
-            <label for="encoded"> Enter decoded message: </label><br><br>
+            <label for="encoded"> Enter encoded message: </label><br><br>
             <textarea name="encoded" id="encoded" cols="100" rows="10" maxlength="600"
                       placeholder="Max 600 symbols" th:text="${message.encodedMessage}"  th:field="${message.encodedMessage}"></textarea>
         </p>
@@ -18,7 +18,7 @@
             <input type="submit" value="Decode"/>
         </p>
     </form>
-    <label for="decoded">Output:</label><br><br>
+    <label for="decoded">Decoded:</label><br><br>
     <textarea name="decoded" id="decoded" cols="100" rows="10" th:text="${message.decodedMessage}" readonly></textarea>
 </div>
 </body>
