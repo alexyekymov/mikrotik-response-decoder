@@ -8,19 +8,18 @@
 </head>
 <body>
 <div class="wrap">
-    <form th:method="POST" action="/decoder" th:object="${encoded}">
+    <form method="POST" th:action="@{/}" th:object="${message}">
         <p>
             <label for="encoded"> Enter decoded message: </label><br><br>
             <textarea name="encoded" id="encoded" cols="100" rows="10" maxlength="600"
-                      placeholder="Max 600 symbols" th:text="${encoded}" ></textarea>
+                      placeholder="Max 600 symbols" th:text="${message.encodedMessage}"  th:field="${message.encodedMessage}"></textarea>
         </p>
         <p>
             <input type="submit" value="Decode"/>
         </p>
     </form>
     <label for="decoded">Output:</label><br><br>
-    <textarea name="decoded" id="decoded" cols="100" rows="10" th:text="${decoded}"
-              readonly></textarea>
+    <textarea name="decoded" id="decoded" cols="100" rows="10" th:text="${message.decodedMessage}" readonly></textarea>
 </div>
 </body>
 </html>
