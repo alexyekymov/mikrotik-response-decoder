@@ -3,17 +3,22 @@ package dev.overlax.decoder.controllers;
 import dev.overlax.decoder.models.Message;
 import dev.overlax.decoder.services.DecoderService;
 import dev.overlax.decoder.utils.DecoderUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-@Controller
-@RequestMapping("/")
+@RestController
+@Slf4j
+@CrossOrigin("http://localhost:5173")
+@RequestMapping(
+        path = "/decoder",
+        produces = MediaType.APPLICATION_JSON_VALUE
+)
 public class DecoderController {
 
     private final DecoderService service;
@@ -23,23 +28,15 @@ public class DecoderController {
         this.service = service;
     }
 
-    @ModelAttribute(name = "message")
-    public Message message() {
-        return new Message();
-    }
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Message> update(@RequestBody Message message) {
 
-    @GetMapping
-    public String index() {
-        return "index";
-    }
-
-    @PostMapping
-    public String create(@ModelAttribute("message") Message message) {
         String decoded = DecoderUtil.decode(message.getEncodedMessage());
         message.setDecodedMessage(decoded);
         message.setProcessedAt(new Date());
         service.save(message);
+        log.info("Received and saved new message: {}", message);
 
-        return "index";
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 }

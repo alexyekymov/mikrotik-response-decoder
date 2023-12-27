@@ -4,4 +4,4 @@ WORKDIR /src
 RUN ./mvnw package -DskipTests
 EXPOSE 8081
 
-ENTRYPOINT ["java","-jar","-Dspring.datasource.username=${DB_USERNAME}", "-Dspring.datasource.password=${DB_PASSWORD}","target/mikrotik-response-decoder-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","target/mikrotik-response-decoder-1.0.0.jar"]

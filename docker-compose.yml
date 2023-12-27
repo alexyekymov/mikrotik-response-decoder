@@ -2,19 +2,20 @@ version: '3'
 
 services:
   ussd_decoder:
-    image: ussd-decoder
+    image: alexyekymov/ussd-decoder:1.0.0
     restart: unless-stopped
     container_name: ussd-decoder
     build:
-      context: ./
+      context: .
+      dockerfile: Dockerfile
     environment:
-      - DB_URL=jdbc:postgresql://psql:5432/ussd_decoder
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
+      - SPRING_DATASOURCE_USERNAME=$${DB_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=$${DB_PASSWORD}
+    networks:
+      - local
     ports:
       - "8081:8081"
 
 networks:
-  default:
-    external:
-      name: local
+  local:
+    external: true
