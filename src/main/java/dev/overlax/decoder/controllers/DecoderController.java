@@ -14,7 +14,6 @@ import java.util.Date;
 
 @RestController
 @Slf4j
-@CrossOrigin("https://ovelrax.pp.ua")
 @RequestMapping(
         path = "/decoder/api/v1/decode",
         produces = MediaType.APPLICATION_JSON_VALUE
